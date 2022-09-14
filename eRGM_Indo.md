@@ -1,8 +1,27 @@
 ## eRGM-Indonesia
 ### Purpose: figure out the promo efficiency and optimize promo activities
-### Solution:
-1. Build prediction models with historical data
+### Solution:    
+1. Whole Picture Overview
 **Incremental GMV = Sales - Baseline - Incremental_Discount - Cannibalization/Pull_forward_effect**
+- Incremental Discount: ..?
+- Cannibalization effect:
+    - set on the *category level* since the sales correlation within same category is highest 
+    - canni/day = uplift of the product - <Gross sales of the whole cate - Baseline of the whole cate>
+- Pull forward effect: 
+    - pull-forward = (Gross sales of non-promotion period -  Baseline of it)/number of days of a promotion period
+    
+- Metrics used to measure:
+    - Gap: |sales-pred|/pred --> The degree of error in the prediction
+    - MAPE:Mean Absolute Percentage error: the sum of gap when sales != 0
+    - WMAPE: Weighted Mean Absolute Percentage Error: add the *weight* assigened to various set(cate/brand/days) into the MAPE formular to consider 
+
+2. Elements involved
+    - SDS
+    - traffic & digital shelf 
+    
+    
+    
+2. Model Building 
 - Baseline: prediction model
     - Pre-Processing:    
     features = [    
@@ -90,9 +109,9 @@
            - week,day,quarter,doy(day of year),year, 
            - get sin() and cos() of them
         - 
-- Incremental Discount:
-- Cannibalization effect:
-- Pull forward effect: 
+ 
 
 2. Deploy the model and make real predictions
-3. Get insights and optimize promo plan
+3. Model testing  
+4. UI creating 
+4. Deployment 
